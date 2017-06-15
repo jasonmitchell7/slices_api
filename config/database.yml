@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  username: <%= ENV["RDS_USERNAME"] %>
+  password: <%= ENV["RDS_PASSWORD"] %>
+  host: <%= ENV["RDS_HOSTNAME"] %>
+  port: <%= ENV["RDS_PORT"] %>
+  encoding: utf8
+  pool: 5
+  timeout: 5000
+
+production:
+  <<: *default
+  database: <%= ENV["RDS_DB_NAME_DEV"] %>
+
+development:
+  <<: *default
+  database: <%= ENV["RDS_DB_NAME_DEV"] %>
+
+test:
+  <<: *default
+  database: slices_db_test

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello there, <%= @user.username %>!</h1>
+    <p>
+      Confirm your e-mail by clicking the button below, or by using the
+      confirmation code.
+
+      <div>
+        <span>
+          Confirmation Code:
+        </span>
+        <span>
+          <%= @user.confirmation_code %>
+        </span>
+      </div>
+
+      <%= link_to 'Confirm',
+          api_confirm_email_with_address_url(email: @user.email, code: @user.confirmation_code),
+          method: :get
+        %>
+
+    </p>
+  </body>
+</html>

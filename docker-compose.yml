@@ -1,0 +1,16 @@
+version: "2"
+
+volumes:
+  db-data:
+    external: false
+
+services:
+  api:
+    build: .
+    env_file: .env
+    volumes:
+      - .:/usr/src/api
+    environment:
+      RAILS_ENV: production
+    ports:
+      - "3000:3000"
